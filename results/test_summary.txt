@@ -1,0 +1,33 @@
+COMPREHENSIVE LOUDSPEAKER SYSTEM IDENTIFICATION TEST RESULTS
+======================================================================
+
+Method Ranking (by R² score):
+  1. Dynax Full (Dynax): R² = -0.3733
+  2. Nonlinear Identification (JAX+Diffrax): R² = -7.6145
+  3. Linear Identification (JAX+Diffrax): R² = -34.1120
+
+Detailed Results:
+
+Linear Identification (JAX+Diffrax):
+  R² Score: -34.1120
+  Final Loss: 0.010114
+  NRMSE - Current: 4.6492
+  NRMSE - Velocity: 9.4642
+  Training Time: 0.00s
+  Model Parameters: {'Re': 6.776930663494325, 'Le': 0.0004866415508427033, 'Bl': 2.9368447359123198, 'M': 0.011030419299976807, 'K': 1196.3729892112526, 'Rm': 0.8278947064744896}
+
+Nonlinear Identification (JAX+Diffrax):
+  R² Score: -7.6145
+  Final Loss: 0.002482
+  NRMSE - Current: 2.3245
+  NRMSE - Velocity: 4.6446
+  Training Time: 0.00s
+  Model Parameters: {'Re': 6.798180971578881, 'Le': 0.00048659518396073774, 'Bl': 3.094288705040692, 'M': 0.011965913581703404, 'K': 1206.3265091154244, 'Rm': 0.7547435909249554, 'Bl_nl': [0.0, 0.0, -59.411015180717435, -0.10544267598741727], 'K_nl': [0.0, 0.0, 89.46460441527825, 0.0]}
+
+Dynax Full (Dynax):
+  R² Score: -0.3733
+  Final Loss: 0.000396
+  NRMSE - Current: 0.9274
+  NRMSE - Velocity: 1.8559
+  Training Time: 0.00s
+  Model Parameters: {'Re': 6.813936257690109, 'Le': 0.00048102980340841944, 'Bl': 3.242557635131659, 'M': 0.011531067375583624, 'K': 1180.2856331738667, 'Rm': 0.8109067988481495, 'L20': 9.245406190362472e-05, 'R20': 0.4995336847049296, 'Bl_nl': [0.0, 0.0, -48.623820415183744, -0.10882852260246703], 'K_nl': [0.0, 0.0, 96.31348671359208, 0.0]}

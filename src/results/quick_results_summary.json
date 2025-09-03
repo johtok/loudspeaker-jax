@@ -1,0 +1,21 @@
+{
+  "complex_tone": {
+    "baseline": {
+      "method": "Baseline Nonlinear",
+      "r2": 0.9458965063095093,
+      "mse": 9.826180757954717e-05,
+      "time": 4.656255722045898,
+      "parameters": {
+        "Re": 6.8,
+        "Bl": 3.2,
+        "K": 1200.0
+      }
+    },
+    "gp_surrogate": {
+      "method": "GP Surrogate",
+      "r2": 0.9458965063095093,
+      "mse": 9.826180757954717e-05,
+      "time": 4.872788906097412,
+      "parameters": {
+        "kernel_params": {
+          "length_scale": 

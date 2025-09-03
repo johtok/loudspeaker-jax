@@ -1,23 +1,75 @@
-
 [project]
 name = "loudspeaker-jax"
 version = "0.1.0"
 description = ""
-authors = ["johtok"]
+authors = [{name = "johtok"}]
+requires-python = ">=3.9"
 
+[tool.pixi.workspace]
+channels = ["conda-forge", "pytorch", "nvidia"]
+platforms = ["linux-64", "osx-64", "osx-arm64", "win-64"]
+
+# Core dependencies from conda-forge
 [tool.pixi.dependencies]
 python = ">=3.9"
-hydra-core = "^1.3.2"
+scipy = ">=1.11.4"
+matplotlib = ">=3.8.2"
+seaborn = ">=0.13.0"
+pandas = ">=1.5.0"
+numpy = ">=1.24.0"
+h5py = ">=3.8.0"
+scikit-learn = ">=1.3.0"
 
-[tool.pixi.feature.dev.dependencies]
-pdoc3 = "^0.11.6"
-pytest = "^8.3.5"
-pre-commit = "^4.2.0"
+# JAX ecosystem as PyPI dependencies
+[tool.pixi.pypi-dependencies]
+jax = ">=0.4.30"
+jaxlib = ">=0.4.30"
+diffrax = ">=0.5.1"
+equinox = ">=0.11.2"
+jaxopt = ">=0.8.4"
+optax = ">=0.1.7"
+numpyro = ">=0.14.0"
+blackjax = ">=1.0.0"
+gpjax = ">=0.6.0"
+dynamax = ">=0.0.1"
+jax-sysid = ">=0.1.0"
+
+# Features for different dependency groups
+[tool.pixi.feature.jax]
+pypi-dependencies = {jax = ">=0.4.30", jaxlib = ">=0.4.30"}
+
+[tool.pixi.feature.diffeq]
+pypi-dependencies = {diffrax = ">=0.5.1", equinox = ">=0.11.2", jaxopt = ">=0.8.4", optax = ">=0.1.7"}
+
+[tool.pixi.feature.bayesian]
+pypi-dependencies = {numpyro = ">=0.14.0", blackjax = ">=1.0.0"}
+
+[tool.pixi.feature.gp]
+pypi-dependencies = {gpjax = ">=0.6.0"}
+
+[tool.pixi.feature.statespace]
+pypi-dependencies = {dynamax = ">=0.0.1"}
+
+[tool.pixi.feature.sysid]
+pypi-dependencies = {jax-sysid = ">=0.1.0"}
+
+[tool.pixi.feature.dev]
+pypi-dependencies = {pytest = ">=8.3.5", pytest-cov = ">=4.1.0", hypothesis = ">=6.92.1"}
+
+[tool.pixi.feature.docs]
+pypi-dependencies = {pdoc3 = ">=0.11.6"}
+
+# Define environments
+[tool.pixi.environments]
+default = {features = [], solve-group = "default"}
+jax = {features = ["jax"], solve-group = "default"}
+full = {features = ["jax", "diffeq", "bayesian", "gp", "statespace", "sysid"], solve-group = "default"}
+dev = {features = ["jax", "diffeq", "dev"], solve-group = "default"}
+docs = {features = ["jax", "docs"], solve-group = "default"}
 
 [build-system]
 build-backend = "hatchling.build"
 requires = ["hatchling"]
-
 
 [tool.ruff]
 # Exclude a variety of commonly ignored directories.
